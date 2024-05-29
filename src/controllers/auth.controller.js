@@ -39,6 +39,34 @@ export const register = async (req, res) => {
 
 
 //FUNCIONALIDAD PARA LOGUEAR
-export const login = (req, res) => {
-  res.send("login")
+export const login = async (req, res) => {
+  
+  const {email, password} = req.body
+
+  try {
+
+    const foundedUser = await User.findOne({email});   
+    if(!foundedUser)
+      return res.status(400).json({message: "usuario no encontrado en nuestra base de datos =("})
+
+    const isMatch = await bcrypt.compare(password, foundedUser.password);
+    if(!isMatch)
+      return res.status(400).json({message: "credenciales inválidas"})
+    
+    const token = await createAccessToken({id: foundedUser._id})
+    
+    res.cookie("token", token)
+    res.json({
+      id: foundedUser._id,
+      username: foundedUser.username,
+      email: foundedUser.email,
+      createdAd: foundedUser.createdAt,
+      updatedAd: foundedUser.updatedAt
+    })
+    
+    
+  
+  } catch (error) {
+    res.status(500).json({message: "error.message"})
+  }
 }
