@@ -70,3 +70,11 @@ export const login = async (req, res) => {
     res.status(500).json({message: "error.message"})
   }
 }
+
+//FUNCIONALIDAD PARA DESLOGUEAR
+export const logout = (req, res) => {
+ res.cookie("token", "", {
+  expires: new Date(0)
+ })
+ return res.sendStatus(200)
+}
