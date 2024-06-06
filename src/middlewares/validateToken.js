@@ -10,7 +10,6 @@ export const authRequired = (req, res, next) => {
       if(err) return res.status(403).json({message: "Token inválido"});
       
       req.user = user
-      console.log(req.user)
       
       next();
     } )
