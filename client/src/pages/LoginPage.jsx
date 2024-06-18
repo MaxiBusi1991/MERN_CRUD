@@ -37,7 +37,7 @@ function LoginPage() {
           }
           <button type='submit' >Iniciar Sesión</button>
         </form>
-        <p className='flex gap-x-2 justify-between mt-4'>No tienes una cuenta? <Link to={'/register'} className='text-sky-500 font-bold'>Registrarme!</Link></p>
+        <p className='flex gap-x-2 justify-between mt-4'>No tienes una cuenta? <Link to={'/register'} className='text-fuchsia-500 font-bold'>Registrarme!</Link></p>
       </div>
     </div>
   )

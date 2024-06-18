@@ -34,7 +34,6 @@ export const AuthProvider = ({children}) => {
   const singin = async(user) => {
     try {
     const res = await loginRequest(user);
-    console.log(res);
     setIsAuthenticated(true);
     setUser(res.data)     
     } catch (error) {
@@ -44,6 +43,12 @@ export const AuthProvider = ({children}) => {
       setErrors([error.response.data.message])
     }
   }; 
+
+  const logout = () => {
+    Cookies.remove('token');
+    setIsAuthenticated(false);
+    setUser(null);
+  }
 
   useEffect(() => {
     if(errors.length > 0) {
@@ -89,6 +94,7 @@ export const AuthProvider = ({children}) => {
     <AuthContext.Provider value={{
       singup,
       singin,
+      logout,
       loading,
       user,
       isAuthenticated,
