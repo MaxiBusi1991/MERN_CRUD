@@ -40,7 +40,7 @@ function RegisterPage() {
           }
           <button type='submit' >Registro</button>
         </form>
-        <p className='flex gap-x-2 justify-between mt-4'>Ya tienes una cuenta? <Link to={'/login'} className='text-sky-500 font-bold'>Iniciar sesión!</Link></p>
+        <p className='flex gap-x-2 justify-between mt-4'>Ya tienes una cuenta? <Link to={'/login'} className='text-fuchsia-500 font-bold'>Iniciar sesión!</Link></p>
       </div>
     </div>
   )

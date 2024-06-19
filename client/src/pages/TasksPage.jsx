@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useTasks } from "../context/TasksContext"
+import { useTasks } from "../context/TasksContext";
+import TaskCard from '../components/TaskCard'
 
 
 function TasksPage() {
@@ -10,16 +11,15 @@ function TasksPage() {
   }, []);
 
   if(tasks.length === 0) return(
-    <h1>Aún no tienes Tareas</h1>
+    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
+      <h1 className="text-2xl font-medium text-center">Aún no tienes Tareas...<br/><br/>Para añadir una nueva dale al botón de "Añadir tarea"</h1>
+    </div>
   );
 
   return (
-    <div>
-      {tasks.map(task => (
-        <div key={task._id}>
-          <h1>{task.title}</h1>
-          <p>{task.description}</p>
-        </div>
+    <div className="grid grid-cols-3 gap-2">
+      {tasks.map((task) => (
+        <TaskCard task={task} key={task._id}/>
       ))
 
       }

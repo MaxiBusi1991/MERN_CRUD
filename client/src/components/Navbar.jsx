@@ -10,10 +10,10 @@ function Navbar() {
       <NavLink to='/'>
       <h1 className="text-2xl font-bold">Admin de Tareas</h1>
       </NavLink>
-      <ul className="flex gap-x-2">
+      <ul className="flex gap-x-2 items-center">
         {isAuthenticated ? (
           <>
-            <p>
+            <p className='mt-1'>
               ¡Bienvenido {user.username}!
             </p>
             <li>
