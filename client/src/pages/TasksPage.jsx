@@ -17,13 +17,16 @@ function TasksPage() {
   );
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
-      {tasks.map((task) => (
-        <TaskCard task={task} key={task._id}/>
-      ))
+    <>
+      <h2 className="text-3xl font-bold hover:text-white my-3 mb-5">Tus tareas</h2>
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+        {tasks.map((task) => (
+          <TaskCard task={task} key={task._id}/>
+        ))
 
-      }
-    </div>
+        }
+      </div>
+    </>
   )
 }
 

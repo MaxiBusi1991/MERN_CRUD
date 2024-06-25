@@ -13,7 +13,7 @@ function TaskCard({task}) {
       <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
         <h1 className="text-2xl font-bold">{task.title}</h1>
         <p className="text-slate-300">{task.description}</p>
-        <p>{new Date(task.date).toLocaleDateString()}</p>
+        <p>Fecha de creación: {new Date(task.date).toLocaleDateString()}</p>
         <div className="flex my-3 gap-2 items-center">
           <button
             className="bg-red-700 hover:bg-red-600 text-white rounded-md px-3 py-1"
