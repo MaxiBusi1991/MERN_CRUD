@@ -2,6 +2,8 @@ import { useForm } from 'react-hook-form'
 import { useTasks } from '../context/TasksContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
+
 
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -17,10 +19,8 @@ function TasksFormPage() {
     async function loadTask() {
       if(params.id){
         const task = await getTask(params.id);
-        console.log(task)
         setValue('title', task.title);
         setValue('description', task.description);
-
     }
     }
     loadTask();
@@ -37,8 +37,19 @@ function TasksFormPage() {
         ...data,
         date: dayjs.utc(data.date).format(),
       });
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Tarea guardada",
+        background:'#27272a',
+        color: '#ffffff',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
+    setTimeout(()=>{
     navigate('/tasks');
+    }, 2000)
   });
 
   return (
